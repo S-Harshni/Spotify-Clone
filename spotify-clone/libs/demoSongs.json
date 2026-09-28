@@ -1,0 +1,74 @@
+[
+  {
+    "id": "demo-1",
+    "user_id": "demo-artist",
+    "author": "Demo Synth Collective",
+    "title": "Morning Circuit",
+    "song_path": "morning-circuit.mp3",
+    "image_path": "morning-circuit.png",
+    "created_at": "2026-09-27T10:00:00Z"
+  },
+  {
+    "id": "demo-2",
+    "user_id": "demo-user",
+    "author": "Pixel Harbor",
+    "title": "Neon Drift",
+    "song_path": "neon-drift.mp3",
+    "image_path": "neon-drift.png",
+    "created_at": "2026-09-26T10:00:00Z"
+  },
+  {
+    "id": "demo-3",
+    "user_id": "demo-artist",
+    "author": "Quiet Static",
+    "title": "Low Tide Lounge",
+    "song_path": "low-tide-lounge.mp3",
+    "image_path": "low-tide-lounge.png",
+    "created_at": "2026-09-25T10:00:00Z"
+  },
+  {
+    "id": "demo-4",
+    "user_id": "demo-artist",
+    "author": "The Sample Rates",
+    "title": "Paper Planes",
+    "song_path": "paper-planes.mp3",
+    "image_path": "paper-planes.png",
+    "created_at": "2026-09-24T10:00:00Z"
+  },
+  {
+    "id": "demo-5",
+    "user_id": "demo-user",
+    "author": "Null Pointer",
+    "title": "Midnight Terminal",
+    "song_path": "midnight-terminal.mp3",
+    "image_path": "midnight-terminal.png",
+    "created_at": "2026-09-23T10:00:00Z"
+  },
+  {
+    "id": "demo-6",
+    "user_id": "demo-artist",
+    "author": "Demo Synth Collective",
+    "title": "Garden Loop",
+    "song_path": "garden-loop.mp3",
+    "image_path": "garden-loop.png",
+    "created_at": "2026-09-22T10:00:00Z"
+  },
+  {
+    "id": "demo-7",
+    "user_id": "demo-artist",
+    "author": "Quiet Static",
+    "title": "City Rain",
+    "song_path": "city-rain.mp3",
+    "image_path": "city-rain.png",
+    "created_at": "2026-09-21T10:00:00Z"
+  },
+  {
+    "id": "demo-8",
+    "user_id": "demo-artist",
+    "author": "Pixel Harbor",
+    "title": "Arcade Sunrise",
+    "song_path": "arcade-sunrise.mp3",
+    "image_path": "arcade-sunrise.png",
+    "created_at": "2026-09-20T10:00:00Z"
+  }
+]

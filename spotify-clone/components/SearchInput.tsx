@@ -3,16 +3,21 @@
 import qs from "query-string";
 
 import useDebounce from "@/hooks/useDebounce";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Input from "./Input";
 
 const SearchInput = () => {
     const router = useRouter();
-    const [value, setValue] = useState <string>("");
+    const currentTitle = useSearchParams().get("title") || "";
+    // Start from the URL's ?title= so shared/bookmarked searches aren't wiped on load.
+    const [value, setValue] = useState <string>(currentTitle);
     const debouncedValue = useDebounce<string>(value,500);
     
     useEffect(() =>{
+        if (debouncedValue === currentTitle) {
+            return;
+        }
         const query = {
             title: debouncedValue,
         };
@@ -23,7 +28,7 @@ const SearchInput = () => {
         });
 
         router.push(url);
-    }, [debouncedValue, router]);
+    }, [debouncedValue, currentTitle, router]);
     
     
     return (

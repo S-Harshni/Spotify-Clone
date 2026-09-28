@@ -4,6 +4,7 @@ import useLoadImage from "@/hooks/useLoadImage";
 import { Song } from "@/types";
 import Image from "next/image";
 import PlayButton from "./PlayButton";
+import { asset } from "@/libs/asset";
 
 interface SongItemProps {
     data: Song;
@@ -47,7 +48,7 @@ const SongItem: React.FC<SongItemProps> = ({
             >
                 <Image
                     className="object-cover"
-                    src= {imagePath || '/images/liked.png'}
+                    src= {imagePath || asset('/images/liked.png')}
                     fill
                     alt ="Image" 
                 />

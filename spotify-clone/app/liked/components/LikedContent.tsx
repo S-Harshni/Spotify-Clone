@@ -3,8 +3,10 @@
 import { useRouter } from "next/navigation";
 import {Song} from "@/types";
 import {useUser} from "@/hooks/useUser";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { DEMO_MODE, getDemoLikedSongs, LIKES_EVENT } from "@/libs/demo";
 import MediaItem from "@/components/MediaItem";
+import useOnPlay from "@/hooks/useOnPlay";
 import LikeButton from "@/components/LikeButton";
 
 interface LikedContentProps {
@@ -12,8 +14,19 @@ interface LikedContentProps {
 }
 
 const LikedContent: React.FC<LikedContentProps> = ({
-    songs
+    songs: initialSongs
 }) => {
+    const [songs, setSongs] = useState(initialSongs);
+    const onPlay = useOnPlay(songs);
+
+    // Demo mode: liked songs live in localStorage, so load them in the browser.
+    useEffect(() => {
+        if (!DEMO_MODE) return;
+        const load = () => { getDemoLikedSongs().then(setSongs); };
+        load();
+        window.addEventListener(LIKES_EVENT, load);
+        return () => window.removeEventListener(LIKES_EVENT, load);
+    }, []);
     const router = useRouter();
     const {isLoading, user} = useUser();
 
@@ -47,7 +60,7 @@ const LikedContent: React.FC<LikedContentProps> = ({
                 >
                     <div className="flex-1">
                         <MediaItem 
-                            onClick={() => {}}
+                            onClick={(id: string) => onPlay(id)}
                             data={song}
                         />
                     </div>

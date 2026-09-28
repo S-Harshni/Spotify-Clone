@@ -119,7 +119,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                     items-center
                 ">
                     <div
-                        onClick={() => {}}
+                        onClick={handlePlay}
                         className="
                             h-10
                             w-10
@@ -159,7 +159,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({
                 "
              />   
              <div
-                onClick={() => {}}
+                onClick={handlePlay}
                 className="
                     flex
                     items-center

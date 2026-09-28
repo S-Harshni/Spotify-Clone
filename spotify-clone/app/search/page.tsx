@@ -3,16 +3,11 @@ import Header from "@/components/Header";
 import SearchInput from "@/components/SearchInput";
 
 import SearchContent from "./components/SearchContent";
+import { Suspense } from "react";
 
-interface SearchProps {
-    searchParams: {
-        title: string;
-    }
-};
-export const revalidate = 0; 
 
-const Search = async({ searchParams}: SearchProps) => {
-    const songs = await getSongsByTitle(searchParams.title);
+const Search = async () => {
+    const songs = await getSongsByTitle("");
     return (
         <div
             className="
@@ -29,10 +24,14 @@ const Search = async({ searchParams}: SearchProps) => {
                     <h1 className="text-white text-3xl font-semibold">
                         Search
                     </h1>
-                    <SearchInput />
+                    <Suspense>
+                        <SearchInput />
+                    </Suspense>
                 </div>
             </Header>
-            <SearchContent songs={songs}/>
+            <Suspense>
+                <SearchContent songs={songs}/>
+            </Suspense>
         </div>
     )
 };

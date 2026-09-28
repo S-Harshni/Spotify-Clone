@@ -2,9 +2,9 @@ import getLikedSongs from "@/actions/getLikedSongs";
 import Header from "@/components/Header";
 import Image from "next/image";
 import LikedContent from "./components/LikedContent";
+import { asset } from "@/libs/asset";
 
 
-export const revalidate = 0;
 
 const Liked = async () => {
     const songs = await getLikedSongs();
@@ -41,7 +41,7 @@ const Liked = async () => {
                               fill
                               alt = "PlayList"
                               className="object-cover"
-                              src="/images/liked.png"
+                              src={asset("/images/liked.png")}
                             />
                         </div>
                         <div className="

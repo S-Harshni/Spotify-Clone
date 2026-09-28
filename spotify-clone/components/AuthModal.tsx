@@ -14,12 +14,14 @@ const AuthModal = () => {
     const { session } = useSessionContext();
     const { onClose, isOpen} = useAuthModal();
 
+    // After a successful login (session appears while the modal is open), refresh and close.
+    // Running this on every mount refreshed the page on each load, which looped on static hosting.
     useEffect(() => {
-        if (session){
+        if (session && isOpen) {
             router.refresh();
             onClose();
         }
-    }, []);
+    }, [session, isOpen, router, onClose]);
 
     const onChange = (open: boolean) => {
         if (!open) {

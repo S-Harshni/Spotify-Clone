@@ -2,15 +2,21 @@
 
 import LikeButton from "@/components/LikeButton";
 import MediaItem from "@/components/MediaItem";
+import useOnPlay from "@/hooks/useOnPlay";
 import { Song } from "@/types";
+import { useSearchParams } from "next/navigation";
 
 interface SearchContentProps {
     songs: Song[];
 }
 
 const SearchContent: React.FC<SearchContentProps> = ({
-    songs
+    songs: allSongs
 }) => {
+    // Filter on the client so the page can be statically exported (no server searchParams).
+    const title = (useSearchParams().get("title") || "").toLowerCase();
+    const songs = title ? allSongs.filter((song) => song.title.toLowerCase().includes(title)) : allSongs;
+    const onPlay = useOnPlay(songs);
     if (songs.length ==0){
         return (
             <div
@@ -36,7 +42,7 @@ const SearchContent: React.FC<SearchContentProps> = ({
                 >
                     <div className="flex-1">
                         <MediaItem 
-                            onClick={() => {}}
+                            onClick={(id: string) => onPlay(id)}
                             data={song}
                         />
 
